@@ -1,0 +1,55 @@
+# StudentLab root .gitignore
+# Added in Step 0 as the only tooling change: this repository is local-first and
+# will contain student data (SQLite DB), secrets (.env), and heavy tool caches
+# (node_modules, venvs, Playwright artifacts). Committing any of those is a
+# security or disk disaster; gitignore must exist BEFORE the first real commit.
+# See docs/GIT_WORKFLOW.md §10 (risk table).
+
+# --- Python / backend ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Node / frontend / e2e ---
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+
+# --- Environment & secrets (NEVER commit; see docs/SECURITY.md §5) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Local database & runtime data (docs/DATABASE.md §1) ---
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+backend/workspaces/
+.runs/
+
+# --- Docker ---
+docker-compose.override.yml
+
+# --- Playwright artifacts (docs/TESTING.md §5) ---
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# --- Editors / OS ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
